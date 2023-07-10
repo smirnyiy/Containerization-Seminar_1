@@ -28,7 +28,17 @@ ldd /bin/ls
 cp /lib/x86_64-linux-gnu/libselinux.so.1 GB/lib/
 cp /lib/x86_64-linux-gnu/libpcre2-8.so.0 GB/lib/
 
-/home/andrey/Изображения/Снимки экрана/Снимок экрана от 2023-07-10 19-05-04.png
+Сетевое пространство имен. Самый простой вариант
+ip netns list
+ip netns add testns — создали
 
-<img src="[https://raw.githubusercontent.com/Terekhov-A-S/Containerization-Seminar_1/main/source/19-21-02.png](https://github.com/smirnyiy/Containerization-Seminar_1/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202023-07-10%2019-06-58.png)https://github.com/smirnyiy/Containerization-Seminar_1/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202023-07-10%2019-06-58.png" alt="sudo unshare -pf -n --mount-proc bash" style="max-width: 100%;">
+ip netns exec testns bash -
+
+unshare —net /bin/bash
+
+теперь выйдем от сюда,и ограничим дополнительно.
+unshare --net --pid --fork --mount-proc /bin/bash
+ps aux
+
+
 
